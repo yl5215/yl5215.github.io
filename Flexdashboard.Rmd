@@ -1,0 +1,82 @@
+---
+title: "Flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, message = FALSE)
+library(tidyverse)
+library(plotly)
+library(p8105.datasets)
+library(flexdashboard)
+```
+
+```{r}
+data = 
+  rest_inspec %>%
+  janitor::clean_names() %>%
+  filter(
+    substr(inspection_date, 1, 4) == 2017,
+    as.numeric(substr(inspection_date, 6, 7)) <= 5,
+    boro != 'Missing') %>%
+  drop_na(score)
+```
+
+```{r}
+scatter_plot = 
+  data %>%
+  group_by(boro, inspection_date) %>%
+  mutate(mean_score = mean(score)) %>%
+  select(boro, inspection_date, mean_score) %>%
+  plot_ly(x = ~inspection_date, y = ~mean_score, color = ~boro, type = 'scatter') %>%
+  layout(
+    xaxis = list(title = "Inspection date"),
+    yaxis = list(title = "Mean score for each date")
+  )
+```
+
+```{r}
+box_plot = 
+  data %>%
+  plot_ly(y = ~score, color = ~boro, type = 'box') %>%
+  layout(
+    xaxis = list(title = "Boro"),
+    yaxis = list(title = "Score")
+    )
+```
+
+```{r}
+bar_plot = 
+  data %>%
+  group_by(cuisine_description) %>%
+  summarize(mean_score = mean(score)) %>%
+  head(8) %>%
+  mutate(cuisine_description = fct_reorder(cuisine_description, -mean_score)) %>%
+  plot_ly(x = ~cuisine_description, y = ~mean_score, color = ~cuisine_description, type = 'bar') %>%
+  layout(
+    xaxis = list(title = "Cuisine Description"),
+    yaxis = list(title = "Mean Score")
+    )
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+### Mean scores of restaurants from Jan 2017 to May 2017
+```{r}
+scatter_plot
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+### Scores of NYC restaurants from Jan 2017 to May 2017
+```{r}
+box_plot
+```
+
+### Top 8 cuisine styles with highest mean inspection scores Jan 2017 to May 2017
+```{r}
+bar_plot
+```
