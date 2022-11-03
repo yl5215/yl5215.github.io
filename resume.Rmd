@@ -1,0 +1,32 @@
+---
+title: "Yucheng's resume"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cerulean
+---
+
+# My academic experience
+
+**Columbia University** <br>
+Sep. 2022—Present <br>
+Degree: Master of Science in Biostatistics
+
+# My professional experience
+
+**Investigation into the Role of FancA in Cancer Development and Validation of FancA as a Novel Drug Target** <br>
+July 2021—June 2022 <br>
+Mentored by Dr. Yanbin Zhang at the University of Miami Miller School Medicine
+
+Position: Research Assistant and Independent Investigator
+
+-	Independently analyzed RNAseq data. After intensive data cleaning and normalization, analyzed and drew conclusions about the impact of FancA perturbations on cancer biology using the DESeq2 R package. Supported the lab in drug target validation of FancA.
+-	Independently explored novel computational methods for protein structure prediction and protein functional analysis.
+-	Supported experimental scientists in data analysis, data visualization, and data interpretation.
+-	Assisted in protein purification, animal experiments, and molecular biology experiments.
+-	Worked with third-party companies in drug screening.
+
+# This is Yucheng's resume pdf document
+
+This is my [resume pdf document](resume.pdf).

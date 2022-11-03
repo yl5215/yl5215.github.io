@@ -1,0 +1,25 @@
+---
+title: "Yucheng's awesome website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# This is Yucheng's awesome website
+
+Welcome!
+
+I'm Yucheng Li, a master student at Columbia University!
+
+# This is my profile picture
+
+Click my profile to go to my IG page:
+<a href="https://www.instagram.com/liyc5920/">
+  <img src="images/profile.jpg" width="15%">
+</a>
+
+# This is my resume
+
+Go to [my resume](resume.html).
+
