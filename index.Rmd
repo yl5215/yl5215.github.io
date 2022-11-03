@@ -23,3 +23,6 @@ Click my profile to go to my IG page:
 
 Go to [my resume](resume.html).
 
+# Flexdashboard
+
+This is the [Flexdashboard](Flexdashboard.html) page with plotly plots.
